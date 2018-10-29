@@ -22,7 +22,7 @@ def showEnviron():
     try:
         result['results']['tempture'] = envirophat.weather.temperature()
         result['results']['altitude'] = envirophat.weather.altitude()
-        result['results']['pressure'] = envirophat.weather.pressure(unit='hPa')
+        result['results']['pressure'] = envirophat.weather.pressure()
         result['results']['light'] = envirophat.light.light()
         result['results']['color'] = envirophat.light.rgb()
         result['results']['leds'] = bool(envirophat.leds.status)
