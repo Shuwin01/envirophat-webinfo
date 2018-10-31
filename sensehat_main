@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, jsonify
-import envirophat
+#import envirophat
+from sense_hat import SenseHat
+sense = SenseHat()
+sense.clear()
 
 app = Flask(__name__)
 
@@ -20,12 +23,12 @@ def showEnviron():
     }
 
     try:
-        result['results']['tempture'] = envirophat.weather.temperature()
-        result['results']['altitude'] = envirophat.weather.altitude()
-        result['results']['pressure'] = envirophat.weather.pressure()
-        result['results']['light'] = envirophat.light.light()
-        result['results']['color'] = envirophat.light.rgb()
-        result['results']['leds'] = bool(envirophat.leds.status)
+        result['results']['tempture'] = sense.get_temperature()
+        result['results']['altitude'] = sense.get_pressure()
+        result['results']['pressure'] = sense.get_pressure()
+#        result['results']['light'] = envirophat.light.light()
+#        result['results']['color'] = envirophat.light.rgb()
+#        result['results']['leds'] = bool(envirophat.leds.status)
         result['error'] = False
 
     except Exception as e:
@@ -34,13 +37,13 @@ def showEnviron():
     return jsonify(result)
 
 @app.route('/led/<state>')
-def leds(state):
-    if state.lower() == 'on':
-        envirophat.leds.on()
-        return jsonify(result=True)
+#def leds(state):
+#    if state.lower() == 'on':
+#        envirophat.leds.on()
+#        return jsonify(result=True)
 
-    envirophat.leds.off()
-    return jsonify(result=False)
+#    envirophat.leds.off()
+#    return jsonify(result=False)
 
 @app.route('/')
 def home():
