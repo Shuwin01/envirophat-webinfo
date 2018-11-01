@@ -2,7 +2,7 @@
   "name": "envirophat-webinfo",
   "version": "0.0.0",
   "description": "enviro pHATWeb display",
-  "main": "main.py",
+  "main": "main4sensehat.py",
   "author": "nc30",
   "license": "GPL",
   "language":"python",
